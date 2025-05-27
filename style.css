@@ -1,0 +1,36 @@
+/* COLOR PALETTE
+ *
+ * Primary Color:
+ * - #CC0000 (Bright Red)
+ *
+ * Secondary Colors:
+ * - #FFCCCC (Light Red)
+ * - #990000 (Dark Red)
+ * - #FFFF99 (Light Yellow)
+ * - #333333 (Dark Gray)
+ * - #F2F0EF (Off-White) 
+ */
+
+body {
+	align-items: center;
+	background-color: #990000;
+	display: flex;
+	justify-content: center;
+}
+
+div.container {
+	background-color: #FFCCCC;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	height: 18rem;
+	width: 18rem;
+}
+
+div.container div.square {
+	background-color: #F2F0EF;
+	border: 1px #333 solid;
+	flex-basis: 1rem;
+	height: 1rem;
+	width: 1rem;
+}
