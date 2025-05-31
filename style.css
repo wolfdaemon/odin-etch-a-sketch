@@ -23,8 +23,8 @@ div.container {
 	background-color: transparent;
 	display: flex;
 	flex-wrap: wrap;
-	height: 900px;
-	width: 900px;
+	height: 60rem;
+	width: 60rem;
 }
 
 div.container div.square-row {
