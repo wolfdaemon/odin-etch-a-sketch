@@ -19,21 +19,22 @@ body {
 	justify-content: center;
 }
 
-button {
-	height: 2rem;
-	width: 4rem;
-	margin: 2rem 0 2rem 0;
-}
-
 div.container {
 	background-color: transparent;
 	display: flex;
-	flex-direction: row;
 	flex-wrap: wrap;
+	height: 900px;
+	width: 900px;
 }
 
-div.container div.square {
+div.container div.square-row {
 	background-color: #F2F0EF;
-	border: 0.1rem #333 solid;
-	flex-basis: 0.9rem;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+}
+
+div.container div.square-row div.square {
+	border: 1px #333 solid;
+	flex: 1;
 }

@@ -1,12 +1,10 @@
 const body = document.querySelector("body");
 const divContainer = document.createElement("div");
 const btn = document.createElement("button");
-let divSquareNum = 16;
-let divSquareNumSquared = divSquareNum * divSquareNum;
-let divSquareNumRemover = 0;
 
-divContainer.style.height = "16rem";
-divContainer.style.width = "16.4rem";
+let divSquareNum = 16; // 16
+let divSquareNumSquared = divSquareNum * divSquareNum;
+
 
 body.appendChild(btn);
 body.appendChild(divContainer);
@@ -15,21 +13,29 @@ divContainer.className = "container";
 
 btn.textContent = "Size";
 
-function defineContainerSize(divSquareNumSquared) {
-	for (let i = 0; i < divSquareNumSquared; i++) {
-		const fragmentDivSquare = document.createDocumentFragment();
-		const divSquare = document.createElement("div");
-		divSquare.className = "square";
-		fragmentDivSquare.appendChild(divSquare);
-		divContainer.appendChild(fragmentDivSquare);
+function defineContainerSize(divSquareNum, divSquareNumSquared) {
+		
+	for (let i = 0; i < divSquareNum; i++) {
+		const divSquareRow = document.createElement("div");
+		divSquareRow.className = "square-row";
+
+		for (let j = 0; j < divSquareNum; j++) {
+			const divSquare = document.createElement("div");
+			divSquare.className = "square";
+			divSquareRow.appendChild(divSquare);
+
+			divSquare.addEventListener("mouseover", (event) => {
+				event.target.style.backgroundColor = "#222";
+			});
+
+		}
+
+		divContainer.appendChild(divSquareRow);
 	}
+
 }
 
-defineContainerSize(divSquareNumSquared);
-
-divContainer.addEventListener("mouseover", (event) => {
-	event.target.style.backgroundColor = "#000";
-});
+defineContainerSize(divSquareNum, divSquareNumSquared);
 
 btn.addEventListener("click", () => {
 	divSquareNum = prompt("What number of squares for the side-length of the grid?");
@@ -40,21 +46,9 @@ btn.addEventListener("click", () => {
 		return;
 	}
 
-	divSquareNumRemover = 0;
-
-	while (divSquareNumRemover < divSquareNumSquared) {
-		const divSquareSelector = document.body.querySelector(".square");
-		divSquareSelector.remove();
-		divSquareNumRemover++; 
-	}
+	document.querySelectorAll(".square").forEach(e => e.remove());
+	document.querySelectorAll(".square-row").forEach(e => e.remove());
 
 	divSquareNumSquared = divSquareNum * divSquareNum;
-	
-	let divSquareNumContainer = divSquareNum;
-
-	divContainer.style.height = divSquareNumContainer + "rem";
-	divContainer.style.width = divSquareNumContainer + 0.4 + "rem";
-
-	divSquareNumSquared = divSquareNum * divSquareNum;
-	defineContainerSize(divSquareNumSquared);
+	defineContainerSize(divSquareNum, divSquareNumSquared);
 });
